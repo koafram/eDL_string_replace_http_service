@@ -1,8 +1,8 @@
 import http, { IncomingMessage, ServerResponse } from "http";
 import { URL } from "url";
 
-import { replaceDogWithCat } from "./replace";
-import { parseMaxReplacements } from "./config/config";
+import { replaceStrings } from "./replace";
+import { parseMaxReplacements } from "./utils/functions";
 import { JsonValue } from "./models/types";
 
 export function createServer() {
@@ -66,7 +66,7 @@ export async function requestHandler(req: IncomingMessage, res: ServerResponse) 
 
     const maxReplacements = parseMaxReplacements(parsedUrl.searchParams.get("maxReplacements"));
     const payload = await parseJsonBody(req);
-    const { data, noOfReplacements, limitReached } = replaceDogWithCat(payload, maxReplacements);
+    const { data, noOfReplacements, limitReached } = replaceStrings(payload, maxReplacements, "dog", "cat");
 
     buildJsonResponse(res, 200, {
       success: true,

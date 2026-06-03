@@ -1,6 +1,6 @@
 import { JsonValue, ReplacementResult } from "./models/types";
 
-export function replaceDogWithCat(payload: JsonValue, maxReplacements: number): ReplacementResult {
+export function replaceStrings(payload: JsonValue, maxReplacements: number, OriginalStr: string, ReplacementStr: string): ReplacementResult {
   let noOfReplacements = 0;
 
   const traverseData = (value: JsonValue): JsonValue => {
@@ -21,10 +21,10 @@ export function replaceDogWithCat(payload: JsonValue, maxReplacements: number): 
     }
 
     if (typeof value === "string") {
-      if (value === "dog") {
+      if (value === OriginalStr) {
         noOfReplacements += 1;
 
-        return "cat";
+        return ReplacementStr;
       }
 
       return value;
