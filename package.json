@@ -1,0 +1,22 @@
+{
+  "name": "http-string-replace-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A TypeScript HTTP endpoint that replaces JSON string values of X (eg. \"dog\") with Y (eg. \"cat\").",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typescript": "^5.5.4"
+  }
+}
